@@ -1,0 +1,26 @@
+TARGETS = rsyslog unattended-upgrades open-vm-tools uuidd killprocs apport apache2 single postgresql thermald dbus speech-dispatcher irqbalance kerneloops whoopsie rsync acpid cron ssh anacron sysstat bluetooth lightdm avahi-daemon cups-browsed saned cups plymouth grub-common ondemand rc.local
+INTERACTIVE = apache2
+apache2: rsyslog
+single: killprocs
+postgresql: rsyslog
+thermald: rsyslog
+dbus: rsyslog
+speech-dispatcher: rsyslog
+irqbalance: rsyslog
+kerneloops: rsyslog
+whoopsie: rsyslog
+rsync: rsyslog
+acpid: rsyslog
+cron: rsyslog
+ssh: rsyslog
+anacron: rsyslog
+sysstat: rsyslog
+bluetooth: rsyslog dbus
+lightdm: dbus acpid
+avahi-daemon: dbus rsyslog
+cups-browsed: rsyslog
+saned: rsyslog dbus
+cups: rsyslog
+plymouth: postgresql rsyslog unattended-upgrades cups-browsed thermald bluetooth dbus open-vm-tools apache2 lightdm speech-dispatcher avahi-daemon irqbalance uuidd kerneloops saned whoopsie cups rsync acpid apport cron ssh anacron sysstat
+grub-common: postgresql rsyslog unattended-upgrades cups-browsed thermald bluetooth dbus open-vm-tools apache2 lightdm speech-dispatcher avahi-daemon irqbalance uuidd kerneloops saned whoopsie cups rsync acpid apport cron ssh anacron sysstat
+ondemand: postgresql rsyslog unattended-upgrades cups-browsed thermald bluetooth dbus open-vm-tools apache2 lightdm speech-dispatcher avahi-daemon irqbalance uuidd kerneloops saned whoopsie cups rsync acpid apport cron ssh anacron sysstat

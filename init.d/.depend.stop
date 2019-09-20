@@ -1,0 +1,11 @@
+TARGETS = apache-htcacheclean unattended-upgrades open-vm-tools uuidd apache2 alsa-utils ufw postgresql thermald speech-dispatcher irqbalance kerneloops whoopsie bluetooth lightdm cups-browsed resolvconf saned cups plymouth urandom avahi-daemon sendsigs rsyslog umountnfs.sh hwclock.sh networking umountfs umountroot halt reboot
+avahi-daemon: cups-browsed saned
+sendsigs: postgresql unattended-upgrades cups-browsed thermald bluetooth apache-htcacheclean open-vm-tools apache2 lightdm plymouth speech-dispatcher alsa-utils avahi-daemon irqbalance uuidd kerneloops
+rsyslog: postgresql sendsigs cups-browsed thermald bluetooth apache-htcacheclean apache2 speech-dispatcher avahi-daemon irqbalance kerneloops saned whoopsie cups
+umountnfs.sh: postgresql unattended-upgrades rsyslog cups-browsed thermald bluetooth apache-htcacheclean open-vm-tools apache2 lightdm plymouth speech-dispatcher alsa-utils sendsigs avahi-daemon irqbalance uuidd kerneloops
+hwclock.sh: postgresql rsyslog cups-browsed uuidd kerneloops
+networking: postgresql cups-browsed apache2 lightdm umountnfs.sh kerneloops
+umountfs: postgresql unattended-upgrades cups-browsed thermald bluetooth apache-htcacheclean open-vm-tools urandom apache2 lightdm resolvconf plymouth speech-dispatcher alsa-utils avahi-daemon umountnfs.sh irqbalance hwclock.sh networking uuidd kerneloops
+umountroot: umountfs
+halt: umountroot
+reboot: umountroot
